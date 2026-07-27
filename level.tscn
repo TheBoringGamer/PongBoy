@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bu5hmtndxv7lo"]
+
+[ext_resource type="Script" uid="uid://c23gfrsxvbpsm" path="res://level.gd" id="1_1ainy"]
+[ext_resource type="PackedScene" uid="uid://crc0rbsgm1r8d" path="res://background.tscn" id="2_1ainy"]
+[ext_resource type="PackedScene" uid="uid://bxevymji3t5c0" path="res://ball.tscn" id="2_oi3di"]
+[ext_resource type="PackedScene" uid="uid://j3ntkymjbvuo" path="res://paddleLeft.tscn" id="2_vonw3"]
+[ext_resource type="PackedScene" uid="uid://cv6r2wbfv4e8f" path="res://paddleRight.tscn" id="3_oi3di"]
+[ext_resource type="PackedScene" uid="uid://bwob1fxhw7ikm" path="res://wall.tscn" id="4_0b4ue"]
+
+[node name="Level" type="Node2D" unique_id=334211753]
+script = ExtResource("1_1ainy")
+
+[node name="Background" parent="." unique_id=1016654997 instance=ExtResource("2_1ainy")]
+
+[node name="Ball" parent="." unique_id=365519906 instance=ExtResource("2_oi3di")]
+position = Vector2(81, 74)
+
+[node name="PaddleLeft" parent="." unique_id=832621054 instance=ExtResource("2_vonw3")]
+position = Vector2(152, 12)
+
+[node name="PaddleRight" parent="." unique_id=1188479131 instance=ExtResource("3_oi3di")]
+position = Vector2(6, 10)
+
+[node name="Wall" parent="." unique_id=783864915 instance=ExtResource("4_0b4ue")]
+
+[node name="Wall2" parent="." unique_id=502005260 instance=ExtResource("4_0b4ue")]
+position = Vector2(160, 144)
+rotation = 3.1415927
