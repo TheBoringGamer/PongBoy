@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://cv6r2wbfv4e8f" path="res://paddleRight.tscn" id="3_oi3di"]
 [ext_resource type="PackedScene" uid="uid://bwob1fxhw7ikm" path="res://wall.tscn" id="4_0b4ue"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ty0te"]
+size = Vector2(20, 166)
+
 [node name="Level" type="Node2D" unique_id=334211753]
 script = ExtResource("1_1ainy")
 
@@ -26,3 +29,22 @@ position = Vector2(6, 10)
 [node name="Wall2" parent="." unique_id=502005260 instance=ExtResource("4_0b4ue")]
 position = Vector2(160, 144)
 rotation = 3.1415927
+
+[node name="LeftPaddleScoringArea" type="Area2D" parent="." unique_id=1109036454]
+position = Vector2(-21, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftPaddleScoringArea" unique_id=1424704347]
+position = Vector2(0, 73)
+shape = SubResource("RectangleShape2D_ty0te")
+debug_color = Color(0.92376524, 4.890084e-05, 0.6844683, 0.41960785)
+
+[node name="RightPaddleScoringArea" type="Area2D" parent="." unique_id=1858545553]
+position = Vector2(181, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightPaddleScoringArea" unique_id=853862005]
+position = Vector2(0, 73)
+shape = SubResource("RectangleShape2D_ty0te")
+debug_color = Color(0.92376524, 4.890084e-05, 0.6844683, 0.41960785)
+
+[connection signal="body_exited" from="LeftPaddleScoringArea" to="." method="_on_left_paddle_scoring_area_body_exited"]
+[connection signal="body_exited" from="RightPaddleScoringArea" to="." method="_on_right_paddle_scoring_area_body_exited"]
