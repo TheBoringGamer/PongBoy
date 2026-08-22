@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="pong"
-run/main_scene="uid://bu5hmtndxv7lo"
+run/main_scene="uid://c27lek1ac5pfh"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameManager="*uid://b6jk5xp3vbpju"
+BallState="*uid://cq48oxkuct66m"
 
 [display]
 

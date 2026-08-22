@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://yw5xwoxryswk"]
+
+[ext_resource type="Script" uid="uid://dx88v1eoqjs08" path="res://paddleAI.gd" id="1_kiid6"]
+[ext_resource type="Texture2D" uid="uid://dcx1scal8gqdy" path="res://Assets/Paddle-end.png" id="2_15qws"]
+[ext_resource type="Texture2D" uid="uid://ck0mbcwr4napj" path="res://Assets/Paddle-middle.png" id="3_8ldv4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ty0te"]
+size = Vector2(8, 11)
+
+[node name="PaddleAI" type="CharacterBody2D" unique_id=832621054]
+motion_mode = 1
+script = ExtResource("1_kiid6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1384065829]
+texture = ExtResource("2_15qws")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=236537976]
+position = Vector2(0, 12)
+scale = Vector2(1, 2)
+texture = ExtResource("3_8ldv4")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=779802482]
+position = Vector2(0, 24)
+rotation = 3.1415927
+texture = ExtResource("2_15qws")
+
+[node name="TopCollider" type="CollisionShape2D" parent="." unique_id=918781194]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_ty0te")
+
+[node name="BottomCollider" type="CollisionShape2D" parent="." unique_id=2138978177]
+position = Vector2(0, 23)
+shape = SubResource("RectangleShape2D_ty0te")
+
+[node name="MainCollider" type="CollisionShape2D" parent="." unique_id=53223960]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_ty0te")

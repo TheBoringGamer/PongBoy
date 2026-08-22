@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://c27lek1ac5pfh"]
+
+[ext_resource type="Script" uid="uid://c23gfrsxvbpsm" path="res://level.gd" id="1_yd0y7"]
+[ext_resource type="PackedScene" uid="uid://crc0rbsgm1r8d" path="res://background.tscn" id="2_3idfm"]
+[ext_resource type="PackedScene" uid="uid://bxevymji3t5c0" path="res://ball.tscn" id="3_dmiqd"]
+[ext_resource type="PackedScene" uid="uid://j3ntkymjbvuo" path="res://paddleLeft.tscn" id="4_lia4t"]
+[ext_resource type="PackedScene" uid="uid://bwob1fxhw7ikm" path="res://wall.tscn" id="6_ophkd"]
+[ext_resource type="PackedScene" uid="uid://yw5xwoxryswk" path="res://paddleAI.tscn" id="6_yd0y7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ty0te"]
+size = Vector2(20, 166)
+
+[node name="Level" type="Node2D" unique_id=334211753]
+script = ExtResource("1_yd0y7")
+
+[node name="Background" parent="." unique_id=1016654997 instance=ExtResource("2_3idfm")]
+
+[node name="Ball" parent="." unique_id=365519906 instance=ExtResource("3_dmiqd")]
+position = Vector2(81, 74)
+
+[node name="PaddleLeft" parent="." unique_id=832621054 instance=ExtResource("4_lia4t")]
+position = Vector2(9, 73)
+
+[node name="Wall" parent="." unique_id=783864915 instance=ExtResource("6_ophkd")]
+
+[node name="Wall2" parent="." unique_id=502005260 instance=ExtResource("6_ophkd")]
+position = Vector2(160, 144)
+rotation = 3.1415927
+
+[node name="LeftPaddleScoringArea" type="Area2D" parent="." unique_id=1109036454]
+position = Vector2(-21, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftPaddleScoringArea" unique_id=1424704347]
+position = Vector2(0, 73)
+shape = SubResource("RectangleShape2D_ty0te")
+debug_color = Color(0.92376524, 4.890084e-05, 0.6844683, 0.41960785)
+
+[node name="RightPaddleScoringArea" type="Area2D" parent="." unique_id=1858545553]
+position = Vector2(181, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightPaddleScoringArea" unique_id=853862005]
+position = Vector2(0, 73)
+shape = SubResource("RectangleShape2D_ty0te")
+debug_color = Color(0.92376524, 4.890084e-05, 0.6844683, 0.41960785)
+
+[node name="PaddleAI" parent="." unique_id=131191718 instance=ExtResource("6_yd0y7")]
+position = Vector2(151, 39)
+
+[connection signal="body_exited" from="LeftPaddleScoringArea" to="." method="_on_left_paddle_scoring_area_body_exited"]
+[connection signal="body_exited" from="RightPaddleScoringArea" to="." method="_on_right_paddle_scoring_area_body_exited"]
