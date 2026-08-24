@@ -6,11 +6,20 @@
 [ext_resource type="PackedScene" uid="uid://j3ntkymjbvuo" path="res://paddleLeft.tscn" id="4_lia4t"]
 [ext_resource type="PackedScene" uid="uid://bwob1fxhw7ikm" path="res://wall.tscn" id="6_ophkd"]
 [ext_resource type="PackedScene" uid="uid://yw5xwoxryswk" path="res://paddleAI.tscn" id="6_yd0y7"]
+[ext_resource type="LabelSettings" uid="uid://dpugoq6xbm8o7" path="res://ScoreLabel.tres" id="7_3idfm"]
+[ext_resource type="Script" uid="uid://b32a8stj7arqe" path="res://scores.gd" id="7_dmiqd"]
+[ext_resource type="FontFile" uid="uid://da1q8wwg4yqp1" path="res://Assets/sysfont.otf" id="9_lia4t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ty0te"]
 size = Vector2(20, 166)
 
+[sub_resource type="LabelSettings" id="LabelSettings_ty0te"]
+font = ExtResource("9_lia4t")
+font_size = 36
+font_color = Color(0.20392157, 0.40784314, 0.3372549, 1)
+
 [node name="Level" type="Node2D" unique_id=334211753]
+process_mode = 1
 script = ExtResource("1_yd0y7")
 
 [node name="Background" parent="." unique_id=1016654997 instance=ExtResource("2_3idfm")]
@@ -46,5 +55,137 @@ debug_color = Color(0.92376524, 4.890084e-05, 0.6844683, 0.41960785)
 [node name="PaddleAI" parent="." unique_id=131191718 instance=ExtResource("6_yd0y7")]
 position = Vector2(151, 39)
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=495115552]
+
+[node name="Scores" type="Control" parent="CanvasLayer" unique_id=526767353]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+script = ExtResource("7_dmiqd")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Scores" unique_id=2075379244]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = -14
+theme_override_constants/margin_right = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Scores/MarginContainer" unique_id=497932889]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="PlayerScore" type="Label" parent="CanvasLayer/Scores/MarginContainer/HBoxContainer" unique_id=1357129572]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "1"
+label_settings = ExtResource("7_3idfm")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Scores/MarginContainer" unique_id=227823106]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="CPUscore" type="Label" parent="CanvasLayer/Scores/MarginContainer/HBoxContainer2" unique_id=1713015527]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "2"
+label_settings = ExtResource("7_3idfm")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=361354584]
+process_mode = 3
+
+[node name="StartTimer" type="Control" parent="CanvasLayer2" unique_id=2042510093]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TimerLabel" type="Label" parent="CanvasLayer2/StartTimer" unique_id=654530103]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -11.5
+offset_right = 5.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "3"
+label_settings = SubResource("LabelSettings_ty0te")
+
+[node name="PressSpace" type="Control" parent="CanvasLayer2" unique_id=113631432]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SpaceLabel" type="Label" parent="CanvasLayer2/PressSpace" unique_id=1431185757]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press Space"
+label_settings = ExtResource("7_3idfm")
+
+[node name="WinLabel" type="Label" parent="CanvasLayer2/PressSpace" unique_id=750288657]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = ExtResource("7_3idfm")
+
+[node name="Timer" type="Timer" parent="." unique_id=382703369]
+process_mode = 3
+wait_time = 0.8
+one_shot = true
+autostart = true
+
+[node name="GoTimer" type="Timer" parent="." unique_id=830513611]
+process_mode = 3
+wait_time = 0.4
+one_shot = true
+
 [connection signal="body_exited" from="LeftPaddleScoringArea" to="." method="_on_left_paddle_scoring_area_body_exited"]
 [connection signal="body_exited" from="RightPaddleScoringArea" to="." method="_on_right_paddle_scoring_area_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="GoTimer" to="." method="_on_go_timer_timeout"]

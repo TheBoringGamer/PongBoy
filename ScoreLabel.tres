@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://dpugoq6xbm8o7"]
+
+[ext_resource type="FontFile" uid="uid://da1q8wwg4yqp1" path="res://Assets/sysfont.otf" id="1_u3wxf"]
+
+[resource]
+font = ExtResource("1_u3wxf")
+font_size = 10
+font_color = Color(0.20392157, 0.40784314, 0.3372549, 1)

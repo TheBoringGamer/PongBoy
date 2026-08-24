@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://cmpu6sk8s3gqm"]
+
+[ext_resource type="Script" uid="uid://i30u25gv3ivb" path="res://transition.gd" id="1_4r5tf"]
+[ext_resource type="Texture2D" uid="uid://ve38p36wxlis" path="res://Assets/Background.png" id="1_pj2mc"]
+[ext_resource type="FontFile" uid="uid://da1q8wwg4yqp1" path="res://Assets/sysfont.otf" id="2_4r5tf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ty0te"]
+font = ExtResource("2_4r5tf")
+font_size = 13
+font_color = Color(0.20392157, 0.40784314, 0.3372549, 1)
+
+[node name="Transition" type="Control" unique_id=561153597]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4r5tf")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=923702206]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_pj2mc")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1924745095]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -30.5
+offset_bottom = 30.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+
+[node name="Label" type="Label" parent="MarginContainer" unique_id=104053189]
+layout_mode = 2
+text = "First one to score 5 wins..."
+label_settings = SubResource("LabelSettings_ty0te")
+
+[node name="Timer" type="Timer" parent="." unique_id=1293854606]
+wait_time = 1.4
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

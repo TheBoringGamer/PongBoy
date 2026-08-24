@@ -1,5 +1,6 @@
 extends Node
 
+signal scored
 
-var right_player_score: int
-var left_player_score: int
+var right_player_score: int = 0
+var left_player_score: int = 0
