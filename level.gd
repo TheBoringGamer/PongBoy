@@ -39,7 +39,7 @@ func _on_left_paddle_scoring_area_body_exited(body: Node2D) -> void:
 	if GameManager.right_player_score == 5:
 		win_label.text = "CPU WINS :("
 		win_label.show()
-	
+		reset_scores()
 	
 func _on_right_paddle_scoring_area_body_exited(body: Node2D) -> void:
 	GameManager.left_player_score += 1
@@ -50,7 +50,12 @@ func _on_right_paddle_scoring_area_body_exited(body: Node2D) -> void:
 	if GameManager.left_player_score == 5:
 		win_label.text = "YOU WIN :)"
 		win_label.show()
-		
+		reset_scores()
+
+func reset_scores() -> void:
+	GameManager.right_player_score = 0
+	GameManager.left_player_score = 0
+
 func _on_timer_timeout() -> void:
 	if timer_count > 1:
 		timer_count -= 1
